@@ -29,7 +29,7 @@ const Sidebar = ({ logout }) => (
       <li className="Sidebar__nav-item">
         <a
           className="Sidebar__nav-link"
-          href="#"
+          href="#logout"
           onClick={e => {
             e.preventDefault();
             logout();
