@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Cms from '../cms/Cms';
-import './Home.css';
+import Layout from '../layout/Layout';
 
 const Home = () => (
-  <Cms>
+  <Layout>
     Home
-  </Cms>
+  </Layout>
 );
 
 

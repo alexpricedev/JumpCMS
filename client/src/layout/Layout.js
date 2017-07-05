@@ -2,15 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import logout from '../app/actions/logout';
-import Sidebar from '../components/Sidebar';
-import './Cms.css';
+import Header from '../components/Header';
+import Wrapper from '../components/Wrapper';
 
-const Cms = ({ app, logout, children }) => (
-  <div className="Cms">
-    <Sidebar logout={logout} />
-    <main className="Cms__main">
-      { children }
-    </main>
+const Layout = ({ app, logout, children }) => (
+  <div>
+    <Header logout={logout} />
+    <Wrapper>
+      <main>
+        { children }
+      </main>
+    </Wrapper>
+    <style jsx>{`
+      main {
+        margin-top: 70px;
+      }
+    `}</style>
   </div>
 );
 
@@ -29,4 +36,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Cms);
+)(Layout);

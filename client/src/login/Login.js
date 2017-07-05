@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import authenticate from '../app/actions/authenticate';
-import './Login.css';
 
 const Login = ({ authenticate }) => (
   <div className="Login">

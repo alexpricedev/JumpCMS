@@ -3,7 +3,7 @@ import { push } from 'react-router-redux';
 import feathers from '../../feathers-client';
 import {
   UPDATE_USER
-} from '../App-constants';
+} from '../constants';
 
 const logout = function() {
   return (dispatch) => {

@@ -1,6 +1,6 @@
 import {
   UPDATE_USER
-} from './App-constants';
+} from './constants';
 
 const initalState = {
   user: null,
