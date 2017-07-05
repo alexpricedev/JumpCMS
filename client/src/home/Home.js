@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
+import Cms from '../cms/Cms';
 import './Home.css';
 
 const Home = () => (
-  <div className="Home">
+  <Cms>
     Home
-  </div>
+  </Cms>
 );
 
 

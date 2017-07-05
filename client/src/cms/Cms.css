@@ -1,0 +1,11 @@
+.Cms {
+  background: grey;
+}
+
+.Cms__main {
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 20px;
+  width: calc(100% - 240px);
+}

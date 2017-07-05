@@ -6,24 +6,29 @@ import {
   UPDATE_USER
 } from '../App-constants';
 
-const authenticate = function(user) {
+const authenticate = function(userDetails) {
   return (dispatch, getState) => {
 
     // If there is a user, add the feathers
     // auth strategy to it
-    user = user ?
-      Object.assign({}, user, { strategy: 'local' }) :
-      user;
+    userDetails = userDetails ?
+      Object.assign({}, userDetails, { strategy: 'local' }) :
+      userDetails;
 
     // Authenticate the user. If no user is supplied
     // feathers will check for a JWT in local storage
-    feathers.authenticate(user)
+    feathers.authenticate(userDetails)
       .then(response => feathers.passport.verifyJWT(response.accessToken))
       .then(payload => feathers.service('users').get(payload.userId))
       .then(user => {
         dispatch({ type: UPDATE_USER, user });
-        dispatch(push('/'));
         feathers.set('user', user);
+
+        // If a user is loggin in then redirect
+        // them to the index
+        if (userDetails) {
+          dispatch(push('/'));
+        }
       })
       .catch(error => {
 

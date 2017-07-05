@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import feathers from '../feathers-client'
+import Cms from '../cms/Cms'
 import './Users.css';
 
 const service = feathers.service('users');
@@ -42,7 +43,7 @@ class Users extends Component {
     const { users } = this.state;
 
     return (
-      <div className="Users">
+      <Cms>
         <h2>Users:</h2>
 
         <ul>
@@ -53,7 +54,7 @@ class Users extends Component {
             ))
           }
         </ul>
-      </div>
+      </Cms>
     );
   }
 }
