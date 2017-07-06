@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { maxWidth } from '../../constants/styles';
+
 const Wrapper = ({ children }) => (
   <div>
     { children }
@@ -7,7 +9,7 @@ const Wrapper = ({ children }) => (
     <style jsx>{`
       div {
         margin: 0 auto;
-        max-width: 1200px;
+        max-width: ${maxWidth};
       }
     `}</style>
   </div>

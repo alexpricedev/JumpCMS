@@ -3,11 +3,13 @@ import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import authenticate from './actions/authenticate';
+import { black, grey } from '../constants/styles.js';
 import './reset.css';
+import './fonts.css';
 
 // App routes
 import Dashboard from '../dashboard/Dashboard';
-import Pages from '../pages/Pages';
+import Pages, { HomePage } from '../pages';
 import Posts from '../posts/Posts';
 import Users from '../users/Users';
 import Login from '../login/Login';
@@ -22,11 +24,12 @@ export class App extends Component {
   render() {
     return (
       <div>
-        <Route exact path="/" component={Dashboard} key="home" />
-        <Route exact path="/pages" component={Pages} key="pages" />
-        <Route exact path="/posts" component={Posts} key="posts" />
-        <Route exact path="/users" component={Users} key="users" />
-        <Route exact path="/login" component={Login} key="login" />
+        <Route exact path="/" component={Dashboard} />
+        <Route exact path="/pages" component={Pages} />
+        <Route exact path="/pages/home" component={HomePage} />
+        <Route exact path="/posts" component={Posts} />
+        <Route exact path="/users" component={Users} />
+        <Route exact path="/login" component={Login} />
 
         <style jsx global>{`
           html {
@@ -35,7 +38,9 @@ export class App extends Component {
           }
 
           body {
-            background: #fcfcfc;
+            background: ${grey()};
+            color: ${black()};
+            font-family: 'Ubuntu', sans-serif;
           }
 
           *,

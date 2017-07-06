@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Layout from '../components/Layout';
+import Layout, { LayoutTitle } from '../components/Layout';
 
 const Dashboard = () => (
   <Layout>
-    Dashboard
+    <LayoutTitle>Dashboard</LayoutTitle>
   </Layout>
 );
 

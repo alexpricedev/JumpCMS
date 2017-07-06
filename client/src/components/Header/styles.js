@@ -1,9 +1,14 @@
+import {
+  black,
+  grey,
+} from '../../constants/styles';
+
 export default `
 
 .Header {
-  background: rgb(255, 255, 255);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  color: black;
+  background: ${grey()};
+  border-bottom: 1px solid ${black(0.1)};
+  color: ${black()};
   height: 50px;
   left: 0;
   position: fixed;
@@ -58,6 +63,6 @@ export default `
         }
 
         :global(.Header__nav-link:hover) {
-          border-bottom-color: black;
+          border-bottom-color: ${black()};
         }
 `;

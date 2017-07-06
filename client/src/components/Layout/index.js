@@ -1,39 +1,9 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import Layout from './Layout';
+import LayoutBody from './LayoutBody';
+import LayoutTitle from './LayoutTitle';
 
-import logout from '../../app/actions/logout';
-import Header from '../Header';
-import Wrapper from '../Wrapper';
-
-const Layout = ({ app, logout, children }) => (
-  <div>
-    <Header logout={logout} />
-    <Wrapper>
-      <main className="fade-in">
-        { children }
-      </main>
-    </Wrapper>
-    <style jsx>{`
-      main {
-        margin-top: 70px;
-      }
-    `}</style>
-  </div>
-);
-
-function mapStateToProps(state) {
-  return { ...state };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    logout: () => {
-      dispatch(logout());
-    }
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Layout);
+export default Layout;
+export {
+  LayoutBody,
+  LayoutTitle
+};
