@@ -17,9 +17,14 @@ export default `
     height: 50px;
   }
 
-    .Header__logo-link {
+    :global(.Header__logo-link) {
       display: block;
       flex: 0 0 50px;
+      transition: opacity 0.3s ease;
+    }
+
+    :global(.Header__logo-link:hover) {
+      opacity: 0.7;
     }
 
       .Header__logo {
@@ -40,7 +45,7 @@ export default `
         margin: 0 10px;
       }
 
-        .Header__nav-link {
+        :global(.Header__nav-link) {
           border-bottom: 2px solid transparent;
           color: inherit;
           display: block;
@@ -52,7 +57,7 @@ export default `
           transition: border 0.3s ease;
         }
 
-        .Header__nav-link:hover {
+        :global(.Header__nav-link:hover) {
           border-bottom-color: black;
         }
 `;

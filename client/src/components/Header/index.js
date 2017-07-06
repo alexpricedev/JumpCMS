@@ -10,8 +10,9 @@ const Header = ({ logout }) => (
     <Wrapper>
       <div className="Header__wrapper">
         <Link
-          to="/"
           className="Header__logo-link"
+          title="Go to dashboard"
+          to="/"
         >
           <img
             alt="logo"
@@ -23,18 +24,26 @@ const Header = ({ logout }) => (
         <ul className="Header__nav">
           <li className="Header__nav-item">
             <Link
-              to="/"
               className="Header__nav-link"
+              to="/"
             >
-              Home
+              Dashboard
             </Link>
           </li>
           <li className="Header__nav-item">
             <Link
-              to="/users"
               className="Header__nav-link"
+              to="/pages"
             >
-              Users
+              Pages
+            </Link>
+          </li>
+          <li className="Header__nav-item">
+            <Link
+              className="Header__nav-link"
+              to="/posts"
+            >
+              Posts
             </Link>
           </li>
           <li className="Header__nav-item">

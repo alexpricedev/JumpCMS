@@ -1,15 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import logout from '../app/actions/logout';
-import Header from '../components/Header';
-import Wrapper from '../components/Wrapper';
+import logout from '../../app/actions/logout';
+import Header from '../Header';
+import Wrapper from '../Wrapper';
 
 const Layout = ({ app, logout, children }) => (
   <div>
     <Header logout={logout} />
     <Wrapper>
-      <main>
+      <main className="fade-in">
         { children }
       </main>
     </Wrapper>

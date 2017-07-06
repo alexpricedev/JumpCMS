@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import feathers from '../feathers-client'
-import Layout from '../layout/Layout'
+import Layout from '../components/Layout';
 
 const service = feathers.service('users');
 

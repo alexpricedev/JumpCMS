@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { CSSTransitionGroup } from 'react-transition-group';
 
 import authenticate from './actions/authenticate';
 import './reset.css';
 
 // App routes
-import Home from '../home/Home';
+import Dashboard from '../dashboard/Dashboard';
+import Pages from '../pages/Pages';
+import Posts from '../posts/Posts';
 import Users from '../users/Users';
 import Login from '../login/Login';
 
@@ -20,12 +21,10 @@ export class App extends Component {
 
   render() {
     return (
-      <CSSTransitionGroup
-        transitionName="fade"
-        transitionEnterTimeout={300}
-        transitionLeaveTimeout={300}
-      >
-        <Route exact path="/" component={Home} key="home" />
+      <div>
+        <Route exact path="/" component={Dashboard} key="home" />
+        <Route exact path="/pages" component={Pages} key="pages" />
+        <Route exact path="/posts" component={Posts} key="posts" />
         <Route exact path="/users" component={Users} key="users" />
         <Route exact path="/login" component={Login} key="login" />
 
@@ -45,17 +44,16 @@ export class App extends Component {
             box-sizing: inherit;
           }
 
-          .fade-enter {
-            opacity: 0;
-            z-index: 1;
+          @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
           }
 
-          .fade-enter.fade-enter-active {
-            opacity: 1;
-            transition: opacity 250ms ease-in;
+          .fade-in {
+            animation: fade-in 1s ease;
           }
         `}</style>
-      </CSSTransitionGroup>
+      </div>
     );
   }
 }
