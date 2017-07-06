@@ -1,26 +1,26 @@
 import React from 'react';
 
-import setupPage from './PageContainer';
+import setupPage from '../PageContainer';
 import Layout, {
   LayoutTitle
-} from '../components/Layout';
+} from '../../components/Layout';
 import {
   Breadcrumbs,
   Breadcrumb
-} from '../components/Breadcrumbs';
+} from '../../components/Breadcrumbs';
 import {
   FormBody,
   FormSection,
   FormSidebar,
   FormTextarea,
   FormField
-} from '../components/Forms';
+} from '../../components/Forms';
 
-const HomePage = ({ data, save }) => (
+const AboutPage = ({ data, save }) => (
   <Layout>
     <Breadcrumbs>
       <Breadcrumb to="/pages/" title="Pages" />
-      <Breadcrumb title="Home Page" />
+      <Breadcrumb title="About Page" />
     </Breadcrumbs>
 
     <LayoutTitle>{ data.title } Page</LayoutTitle>
@@ -77,4 +77,4 @@ const HomePage = ({ data, save }) => (
   </Layout>
 );
 
-export default setupPage(HomePage);;
+export default setupPage('about', AboutPage);;

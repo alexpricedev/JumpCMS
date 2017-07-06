@@ -12,19 +12,16 @@ class PageContainer extends Component {
 
   render() {
     const {
-      loading,
-      location,
       Component,
+      loading,
       pages,
-      save
+      save,
+      slug,
     } = this.props;
 
     if (loading)  {
       return <Layout><div>Loading...</div></Layout>;
     }
-
-    // Get the current page slug
-    const slug = location.pathname.split('/').pop();
 
     // Get the page object from the store
     const page = pages.find(page => page.slug === slug);
@@ -50,11 +47,17 @@ function mapDispatchToProps(dispatch) {
 
 // Expose a wrapping function so we can
 // re-use this fetching container
-const setupPage = Component => {
+const setupPage = (slug, pageComponent) => {
   return connect(
     mapStateToProps,
     mapDispatchToProps
-  )(props => <PageContainer {...props} Component={Component} />);
+  )(props => (
+    <PageContainer
+      {...props}
+      slug={slug}
+      Component={pageComponent}
+    />
+  ));
 };
 
 export default setupPage;

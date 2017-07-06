@@ -28,7 +28,7 @@ const Button = ({ children, block }) => {
           display: inline-block;
           font-size: 13px;
           padding: 14px 20px;
-          pointer: cursor;
+          cursor: pointer;
           font-weight: 400;
           letter-spacing: 0.2em;
           text-transform: uppercase;

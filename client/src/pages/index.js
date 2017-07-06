@@ -1,7 +1,7 @@
 import Pages from './Pages';
-import HomePage from './HomePage';
+import EditPage from './EditPage';
 
 export default Pages;
 export {
-  HomePage
+  EditPage
 };

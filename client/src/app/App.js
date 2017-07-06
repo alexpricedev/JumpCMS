@@ -9,7 +9,7 @@ import './fonts.css';
 
 // App routes
 import Dashboard from '../dashboard/Dashboard';
-import Pages, { HomePage } from '../pages';
+import Pages, { EditPage } from '../pages';
 import Posts from '../posts/Posts';
 import Users from '../users/Users';
 import Login from '../login/Login';
@@ -18,7 +18,7 @@ const App = () => (
   <div>
     <Route exact path="/" component={Dashboard} />
     <Route exact path="/pages" component={Pages} />
-    <Route exact path="/pages/home" component={HomePage} />
+    <Route exact path="/pages/:slug" component={EditPage} />
     <Route exact path="/posts" component={Posts} />
     <Route exact path="/users" component={Users} />
     <Route exact path="/login" component={Login} />
