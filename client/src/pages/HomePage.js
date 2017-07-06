@@ -1,8 +1,13 @@
 import React from 'react';
 
+import setupPage from './PageContainer';
 import Layout, {
   LayoutTitle
 } from '../components/Layout';
+import {
+  Breadcrumbs,
+  Breadcrumb
+} from '../components/Breadcrumbs';
 import {
   FormBody,
   FormSection,
@@ -11,39 +16,51 @@ import {
   FormField
 } from '../components/Forms';
 
-const HomePage = () => (
+const HomePage = ({ data, save }) => (
   <Layout>
-    <LayoutTitle>Home Page</LayoutTitle>
-    <form action="">
+    <Breadcrumbs>
+      <Breadcrumb to="/pages/" title="Pages" />
+      <Breadcrumb title="Home Page" />
+    </Breadcrumbs>
+
+    <LayoutTitle>{ data.title } Page</LayoutTitle>
+
+    <form
+      onSubmit={e => {
+        e.preventDefault();
+
+        const content = {
+          heroHeadline: e.target.heroHeadline.value,
+          heroButtonText: e.target.heroButtonText.value,
+          bodyText: e.target.bodyText.value
+        };
+
+        save(data._id, { content });
+      }}
+    >
       <FormBody>
         <FormSection title="Hero">
           <FormField
-            name="hero-headline"
+            name="heroHeadline"
             label="Hero headline"
             type="text"
-            // value={form.bussiness}
-            // onChange={updateFormValue}
+            defaultValue={data.content.heroHeadline}
             helptext="Enter a powerful statement about your business"
-            // error={form.errors.business}
           />
           <FormField
-            name="hero-button-text"
+            name="heroButtonText"
             label="Hero button text"
             type="text"
-            // value={form.bussiness}
-            // onChange={updateFormValue}
-            // error={form.errors.business}
+            defaultValue={data.content.heroButtonText}
             small
           />
         </FormSection>
         <FormSection title="Main Content">
           <FormTextarea
-            name="body-text"
+            name="bodyText"
             label="Body Text"
-            // value={form.bussiness}
-            // onChange={updateFormValue}
+            defaultValue={data.content.bodyText}
             helptext="Enter your main body text here"
-            // error={form.errors.business}
           />
         </FormSection>
       </FormBody>
@@ -60,5 +77,4 @@ const HomePage = () => (
   </Layout>
 );
 
-
-export default HomePage;
+export default setupPage(HomePage);;

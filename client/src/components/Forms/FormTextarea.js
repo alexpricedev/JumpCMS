@@ -3,12 +3,12 @@ import classNames from 'classnames'
 
 import {
   white,
-  black,
-  grey
+  black
 } from '../../constants/styles';
 
 const FormTextarea = (props) => {
   const {
+    defaultValue,
     error,
     helptext,
     label,
@@ -45,6 +45,7 @@ const FormTextarea = (props) => {
         name={name}
         id={name}
         value={value}
+        defaultValue={defaultValue}
         onChange={onChange}
         placeholder={placeholder}
         className={inputCls}

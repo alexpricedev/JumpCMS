@@ -1,1 +1,2 @@
 export const UPDATE_USER = 'APP/UPDATE_USER';
+export const UPDATE_LOADING = 'APP/UPDATE_LOADING';

@@ -1,43 +1,67 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import fetchPages, { service } from './actions/fetch-pages';
 import Layout, { LayoutTitle } from '../components/Layout';
+import { white, darkgreen, green } from '../constants/styles';
 
-const Pages = () => (
+const Pages = ({ pages }) => (
   <Layout>
-    <LayoutTitle>Your Pages</LayoutTitle>
+    <LayoutTitle>
+      Your Pages
+
+      <a
+        href=""
+        onClick={e => {
+          e.preventDefault();
+          var title = prompt("Page title");
+
+          if (title != null) {
+            service.create({
+              title,
+              slug: title.toLowerCase()
+            });
+          }
+        }}
+      >
+        Create new
+      </a>
+    </LayoutTitle>
 
     <ul>
-      <li>
-        <Link
-          className="Pages__link"
-          title="Edit your home page"
-          to="/pages/home"
-        >
-          Home
-        </Link>
-      </li>
-      <li>
-        <Link
-          className="Pages__link"
-          title="Edit your about us page"
-          to="/pages/about-us"
-        >
-          About us
-        </Link>
-      </li>
-      <li>
-        <Link
-          className="Pages__link"
-          title="Edit your contact page"
-          to="/pages/contact"
-        >
-          Contact
-        </Link>
-      </li>
+      { pages.map(page => (
+          <li key={page._id}>
+            <Link
+              className="Pages__link"
+              title={`Edit your ${page.title} page`}
+              to={`/pages/${page.slug}`}
+            >
+              { page.title }
+            </Link>
+          </li>
+        ))
+      }
     </ul>
 
     <style jsx>{`
+      a {
+        border-radius: 3px;
+        border: 1px solid ${darkgreen()};
+        color: ${white()};
+        display: inline-block;
+        font-size: 0.7em;
+        margin-left: 12px;
+        padding: 6px 8px;
+        background: ${green()};
+        text-decoration: none;
+        transition: background 0.3s ease;
+      }
+
+      a:hover {
+        background: ${darkgreen()};
+      }
+
       :global(.Pages__link) {
         background: white;
         border: 1px solid rgba(0, 0, 0, 0.05);
@@ -57,5 +81,33 @@ const Pages = () => (
   </Layout>
 );
 
+class PagesContainer extends Component {
+  componentDidMount() {
+    this.props.fetch();
+  }
 
-export default Pages;
+  render() {
+    const { loading, pages } = this.props;
+
+    return loading ?
+      <Layout><div>Loading...</div></Layout> :
+      <Pages pages={pages} />;
+  }
+}
+
+function mapStateToProps(state) {
+  return state.pages;
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    fetch: () => {
+      dispatch(fetchPages());
+    }
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PagesContainer);

@@ -3,12 +3,12 @@ import classNames from 'classnames'
 
 import {
   white,
-  black,
-  grey
+  black
 } from '../../constants/styles';
 
 const FormField = (props) => {
   const {
+    defaultValue,
     error,
     helptext,
     label,
@@ -51,6 +51,7 @@ const FormField = (props) => {
         id={name}
         type={type}
         value={value}
+        defaultValue={defaultValue}
         onChange={onChange}
         placeholder={placeholder}
         className={inputCls}

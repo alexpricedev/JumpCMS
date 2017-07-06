@@ -4,7 +4,6 @@ import {
 } from '../../constants/styles';
 
 export default `
-
 .Header {
   background: ${grey()};
   border-bottom: 1px solid ${black(0.1)};
@@ -14,6 +13,7 @@ export default `
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 99;
 }
 
   .Header__wrapper {

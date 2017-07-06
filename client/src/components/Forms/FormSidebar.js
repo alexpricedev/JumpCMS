@@ -1,12 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import { white, black } from '../../constants/styles';
 import Button from '../Button';
 
-const FormSidebar = () => (
+const FormSidebar = ({ saving }) => (
   <aside>
     <Button block>
-      Save
+      { saving ? 'Saving...' : 'Save' }
     </Button>
 
     <style jsx>{`
@@ -22,4 +23,4 @@ const FormSidebar = () => (
   </aside>
 );
 
-export default FormSidebar;
+export default connect(s => s.pages)(FormSidebar);

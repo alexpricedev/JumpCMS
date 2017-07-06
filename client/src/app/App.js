@@ -14,7 +14,46 @@ import Posts from '../posts/Posts';
 import Users from '../users/Users';
 import Login from '../login/Login';
 
-export class App extends Component {
+const App = () => (
+  <div>
+    <Route exact path="/" component={Dashboard} />
+    <Route exact path="/pages" component={Pages} />
+    <Route exact path="/pages/home" component={HomePage} />
+    <Route exact path="/posts" component={Posts} />
+    <Route exact path="/users" component={Users} />
+    <Route exact path="/login" component={Login} />
+
+    <style jsx global>{`
+      html {
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      body {
+        background: ${grey()};
+        color: ${black()};
+        font-family: 'Ubuntu', sans-serif;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      .fade-in {
+        animation: fade-in 1s ease;
+      }
+    `}</style>
+  </div>
+);
+
+class AppContainer extends Component {
   componentDidMount() {
 
     // Setup session based on JWT or redirect
@@ -22,45 +61,16 @@ export class App extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <Route exact path="/" component={Dashboard} />
-        <Route exact path="/pages" component={Pages} />
-        <Route exact path="/pages/home" component={HomePage} />
-        <Route exact path="/posts" component={Posts} />
-        <Route exact path="/users" component={Users} />
-        <Route exact path="/login" component={Login} />
+    const { loading } = this.props;
 
-        <style jsx global>{`
-          html {
-            box-sizing: border-box;
-            font-family: sans-serif;
-          }
-
-          body {
-            background: ${grey()};
-            color: ${black()};
-            font-family: 'Ubuntu', sans-serif;
-          }
-
-          *,
-          *::before,
-          *::after {
-            box-sizing: inherit;
-          }
-
-          @keyframes fade-in {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
-
-          .fade-in {
-            animation: fade-in 1s ease;
-          }
-        `}</style>
-      </div>
-    );
+    return loading ?
+      <div>Loading...</div> :
+      <App />;
   }
+}
+
+function mapStateToProps(state) {
+  return state.app;
 }
 
 function mapDispatchToProps(dispatch) {
@@ -68,7 +78,10 @@ function mapDispatchToProps(dispatch) {
     authenticate: () => {
       dispatch(authenticate());
     }
-  }
+  };
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppContainer);
