@@ -1,7 +1,11 @@
 {
   "name": "JumpCMS-Admin",
+  "description": "The admin interface for the JumpCMS",
   "version": "0.1.0",
-  "private": true,
+  "author": {
+    "name": "Alex Price",
+    "email": "hi@alexpriceonline.com"
+  },
   "dependencies": {
     "autoprefixer": "7.1.1",
     "babel-core": "6.25.0",
@@ -65,6 +69,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
   },
+  "proxy": "http://localhost:4000",
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx}"

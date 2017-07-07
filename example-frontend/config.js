@@ -1,5 +1,5 @@
 const api = {
-  endpoint: 'http://localhost:3030',
+  endpoint: 'http://localhost:4000',
 };
 
 export {

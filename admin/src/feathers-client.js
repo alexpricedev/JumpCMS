@@ -6,11 +6,9 @@ import reactive from 'feathers-reactive'
 import rxjs from 'rxjs'
 import socketio from 'feathers-socketio/client';
 
-// API URL
-const url = 'http://localhost:3030';
-
-// Connect to the socket
-const socket = io(url);
+// Connect to the api (assumes same host & port
+// but is proxied in dev - see package.json)
+const socket = io();
 
 const client = feathers()
   .configure(hooks())

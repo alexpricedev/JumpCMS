@@ -4,7 +4,7 @@ const app = require('../src/app');
 
 describe('Feathers application tests', () => {
   before(function(done) {
-    this.server = app.listen(3030);
+    this.server = app.listen(4000);
     this.server.once('listening', () => done());
   });
 
@@ -13,7 +13,7 @@ describe('Feathers application tests', () => {
   });
 
   it('starts and shows the index page', () => {
-    return rp('http://localhost:3030').then(body =>
+    return rp('http://localhost:4000').then(body =>
       assert.ok(body.indexOf('<html>') !== -1)
     );
   });
@@ -21,7 +21,7 @@ describe('Feathers application tests', () => {
   describe('404', function() {
     it('shows a 404 HTML page', () => {
       return rp({
-        url: 'http://localhost:3030/path/to/nowhere',
+        url: 'http://localhost:4000/path/to/nowhere',
         headers: {
           'Accept': 'text/html'
         }
@@ -33,7 +33,7 @@ describe('Feathers application tests', () => {
 
     it('shows a 404 JSON error without stack trace', () => {
       return rp({
-        url: 'http://localhost:3030/path/to/nowhere',
+        url: 'http://localhost:4000/path/to/nowhere',
         json: true
       }).catch(res => {
         assert.equal(res.statusCode, 404);

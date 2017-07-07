@@ -1,12 +1,8 @@
 {
-  "name": "cms",
-  "description": "Simple CMS",
-  "version": "0.0.0",
-  "homepage": "",
+  "name": "JumpCMS-API",
+  "description": "The backend for the JumpCMS",
+  "version": "0.1.0",
   "main": "src",
-  "keywords": [
-    "feathers"
-  ],
   "author": {
     "name": "Alex Price",
     "email": "hi@alexpriceonline.com"

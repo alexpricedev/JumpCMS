@@ -1,57 +1,16 @@
-# cms
+# JumpCMS API
 
-> Simple CMS
+This is the backend of JumpCMS. It provides a REST endpoints for the admin
+interface and front-end website.
 
-## About
+## Quick start
 
-This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
+1. Clone and `cd` into directory
+2. `yarn`
+3. `yarn start`
+4. Visit [localhost:4000](http://localhost:4000)
 
-## Getting Started
+## FeathersJS
 
-Getting up and running is as easy as 1, 2, 3.
-
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
-
-    ```
-    cd path/to/cms; npm install
-    ```
-
-3. Start your app
-
-    ```
-    npm start
-    ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-Feathers has a powerful command line interface. Here are a few things it can do:
-
-```
-$ npm install -g feathers-cli             # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers generate model                 # Generate a new Model
-$ feathers help                           # Show all commands
-```
-
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
-
-## Changelog
-
-__0.1.0__
-
-- Initial release
-
-## License
-
-Copyright (c) 2016
-
-Licensed under the [MIT license](LICENSE).
+This project uses [Feathers](http://feathersjs.com). An open source web
+framework. Checkout their docs to understand how this project is structured.

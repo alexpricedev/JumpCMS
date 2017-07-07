@@ -1,4 +1,11 @@
 {
+  "name": "JumpCMS-Example-Frontend",
+  "description": "An exmaple front-end website using the JumpCMS endpoint",
+  "version": "0.1.0",
+  "author": {
+    "name": "Alex Price",
+    "email": "hi@alexpriceonline.com"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",
