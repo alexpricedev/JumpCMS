@@ -1,7 +1,7 @@
 # JumpCMS
 
-NOTE: Super early version (basically a prototype) not intended for
-production use.
+**NOTE: Super early version (basically a prototype) not intended for
+production use.**
 
 JumpCMS is a content management system framework. It allows developers to
 easily build custom CMSs for their clients.
