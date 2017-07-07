@@ -3,16 +3,12 @@ import { push } from 'react-router-redux';
 import feathers from '../../feathers-client';
 import {
   UPDATE_USER,
-  UPDATE_LOADING
+  APP_LOADING
 } from '../constants';
+import fetchPages from './fetch-pages';
 
 const authenticate = function(userDetails) {
   return (dispatch, getState) => {
-
-    dispatch({
-      type: UPDATE_LOADING,
-      state: true
-    });
 
     // If there is a user, add the feathers
     // auth strategy to it
@@ -26,12 +22,11 @@ const authenticate = function(userDetails) {
       .then(response => feathers.passport.verifyJWT(response.accessToken))
       .then(payload => feathers.service('users').get(payload.userId))
       .then(user => {
-        dispatch({ type: UPDATE_USER, user });
-        dispatch({
-          type: UPDATE_LOADING,
-          state: false
-        });
         feathers.set('user', user);
+        dispatch({ type: UPDATE_USER, user });
+
+        // Get the pages from the DB
+        dispatch(fetchPages());
 
         // If a user is logging in then redirect
         // them to the index
@@ -42,7 +37,7 @@ const authenticate = function(userDetails) {
       })
       .catch(error => {
         dispatch({
-          type: UPDATE_LOADING,
+          type: APP_LOADING,
           state: false
         });
 

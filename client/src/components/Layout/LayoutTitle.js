@@ -7,7 +7,7 @@ const LayoutTitle = ({ children }) => (
     <style jsx>{`
       h1 {
         font-size: 20px;
-        margin: 0 0 10px;
+        margin: 0 0 15px;
       }
     `}</style>
   </h1>

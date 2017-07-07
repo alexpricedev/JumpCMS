@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { white, black } from '../../constants/styles';
 import Button from '../Button';
 
-const FormSidebar = ({ saving }) => (
+const FormSidebar = ({ pageSaving }) => (
   <aside>
     <Button block>
-      { saving ? 'Saving...' : 'Save' }
+      { pageSaving ? 'Saving...' : 'Save' }
     </Button>
 
     <style jsx>{`
@@ -23,4 +23,6 @@ const FormSidebar = ({ saving }) => (
   </aside>
 );
 
-export default connect(s => s.pages)(FormSidebar);
+export default connect(
+  state => state.pages
+)(FormSidebar);

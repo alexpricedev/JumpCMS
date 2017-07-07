@@ -1,38 +1,17 @@
 import {
-  UPDATE_PAGES,
-  UPDATE_LOADING,
-  FETCHED_PAGES,
-  SAVING_CHANGES
+  PAGE_SAVING
 } from './constants';
 
 const initalState = {
-  loading: true,
-  fetched: false,
-  saving: false,
-  pages: [],
+  pageSaving: false,
 };
 
 const reducer = function(state = initalState, action = {}) {
   switch (action.type) {
 
-    case UPDATE_PAGES:
+    case PAGE_SAVING:
       return Object.assign({}, state, {
-        pages: action.pages,
-      });
-
-    case UPDATE_LOADING:
-      return Object.assign({}, state, {
-        loading: action.state,
-      });
-
-    case FETCHED_PAGES:
-      return Object.assign({}, state, {
-        fetched: true
-      });
-
-    case SAVING_CHANGES:
-      return Object.assign({}, state, {
-        saving: action.state
+        pageSaving: action.state
       });
 
     default:

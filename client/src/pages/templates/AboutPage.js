@@ -1,6 +1,5 @@
 import React from 'react';
 
-import setupPage from '../PageContainer';
 import Layout, {
   LayoutTitle
 } from '../../components/Layout';
@@ -77,4 +76,4 @@ const AboutPage = ({ data, save }) => (
   </Layout>
 );
 
-export default setupPage('about', AboutPage);;
+export default AboutPage;

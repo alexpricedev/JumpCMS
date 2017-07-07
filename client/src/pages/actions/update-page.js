@@ -1,23 +1,22 @@
-import {
-  SAVING_CHANGES
-} from '../constants';
+import { UPDATE_PAGE } from '../../app/constants';
+import { PAGE_SAVING } from '../constants';
 
-import { service } from './fetch-pages';
+import pages from '../../app/services/pages';
 
 const updatePage = function(pageId, newData) {
   return (dispatch) => {
-    dispatch({ type: SAVING_CHANGES, state: true });
+    dispatch({ type: PAGE_SAVING, state: true });
 
-    service
+    pages
       .patch(pageId, newData)
       .then((res) => {
-        console.log('res', res);
+        dispatch({ type: UPDATE_PAGE, page: res });
       })
       .catch(error => {
         console.log('SAVE ERROR:', error);
       })
       .then(() => {
-        dispatch({ type: SAVING_CHANGES, state: false });
+        dispatch({ type: PAGE_SAVING, state: false });
       });
   };
 };
