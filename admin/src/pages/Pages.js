@@ -1,25 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-import Layout, {
-  LayoutTitle
-} from '../components/Layout';
+import Layout, { LayoutTitle } from '../components/Layout';
 import { white } from '../constants/styles';
+import templates from './templates';
 
-const Pages = ({ pages }) => (
+const Pages = () => (
   <Layout>
     <LayoutTitle>Your Pages</LayoutTitle>
 
     <ul>
-      { pages.map(page => (
-          <li key={page._id}>
+      { Object.keys(templates).map((template, index) => (
+          <li key={template}>
             <Link
               className="Pages__link"
-              title={`Edit your ${page.title} page`}
-              to={`/pages/${page.slug}`}
+              title={`Edit your ${template} page`}
+              to={`/pages/${template}`}
             >
-              { page.title }
+              { template }
             </Link>
           </li>
         ))
@@ -36,6 +34,7 @@ const Pages = ({ pages }) => (
         padding: 20px;
         position: relative;
         text-decoration: none;
+        text-transform: capitalize;
         transition: all 0.3s ease;
       }
 
@@ -46,6 +45,4 @@ const Pages = ({ pages }) => (
   </Layout>
 );
 
-export default connect(
-  state => state.app
-)(Pages);
+export default Pages;

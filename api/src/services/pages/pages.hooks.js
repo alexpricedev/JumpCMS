@@ -1,13 +1,14 @@
 const { authenticate } = require('feathers-authentication').hooks;
+const { setNow } = require('feathers-hooks-common');
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [ authenticate('jwt') ],
-    update: [ authenticate('jwt') ],
-    patch: [ authenticate('jwt') ],
+    create: [ authenticate('jwt'), setNow('createdAt', 'updatedAt') ],
+    update: [ authenticate('jwt'), setNow('updatedAt') ],
+    patch: [ authenticate('jwt'), setNow('updatedAt') ],
     remove: [ authenticate('jwt') ]
   },
 

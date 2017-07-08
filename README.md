@@ -3,11 +3,14 @@
 **NOTE: Super early version (basically a prototype) not intended for
 production use.**
 
-JumpCMS is a content management system framework. It allows developers to
-easily build custom CMSs for their clients.
+JumpCMS is a content management system framework. It's designed for the rapid
+of bespoke content management systems. It leverages the flexibility of NoSQL
+databases to allow the schema to be defined by React components.
 
-It's a headless CMS meaning it doens't handle any rendering of templates, it
-simply exposes a REST endpoint. This means you can built your front-end however
+Creating a new page type is as simple as exporting a new template component.
+
+JumpCMS is headless, meaning it doens't handle any rendering of templates, it
+simply exposes REST endpoints. This means you can built your front-end however
 you like!
 
 ## Try it out
