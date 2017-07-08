@@ -10,7 +10,7 @@ const Pages = () => (
     <LayoutTitle>Your Pages</LayoutTitle>
 
     <ul>
-      { Object.keys(templates).map((template, index) => (
+      { Object.keys(templates).map(template => (
           <li key={template}>
             <Link
               className="Pages__link"

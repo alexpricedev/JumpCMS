@@ -23,8 +23,6 @@ const EditPage = props => {
   // Get the page object from the store
   const page = pages.find(page => page.slug === slug) || { content: {} };
 
-  console.log('page',page);
-
   // Get the right page template
   let Template = templates[slug];
 
