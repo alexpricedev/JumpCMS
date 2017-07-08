@@ -14,43 +14,52 @@ const FormSidebar = ({ pageSaving, page }) => {
   const createdAt = moment(page.createdAt);
   const updatedAt = moment(page.updatedAt);
 
+  const saveText = newPage ? 'Create' : 'Save';
+
   return (
     <aside>
-      <Button block>
-        { pageSaving ? 'Saving...' : 'Save' }
-      </Button>
+      <div>
+        <Button block>
+          { pageSaving ?  'Saving...' : saveText }
+        </Button>
 
-      { !newPage &&
-        <span>
-          <div>
+        { !newPage &&
+          <span>
             Updated
             <time dateTime={updatedAt.format()}>
               { updatedAt.fromNow() }
             </time>
-          </div>
+          </span>
+        }
+      </div>
 
-          <div>
-            Created on
-            <time datetime={createdAt.format()}>
-              { createdAt.format('MMMM Do YYYY') }
-            </time>
-          </div>
+      { !newPage &&
+        <span className="mute">
+          Created on
+          <time datetime={createdAt.format()}>
+            { createdAt.format('MMMM Do YYYY') }
+          </time>
         </span>
       }
 
       <style jsx>{`
-        aside {
+        div {
           background: ${white()};
           border-radius: 3px;
           border: 1px solid ${black(0.1)};
           padding: 20px;
         }
 
-        div {
+        span {
+          display: block;
           font-size: 14px;
           margin-top: 14px;
-          opacity: 0.3;
+          opacity: 0.4;
           text-align: center;
+        }
+
+        .mute {
+          opacity: 0.2;
         }
 
         time::before {
