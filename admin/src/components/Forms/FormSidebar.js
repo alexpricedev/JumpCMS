@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { white, black } from '../../constants/styles';
+import { white, black, medium } from '../../constants/styles';
 import Button from '../Button';
 
 const FormSidebar = ({ pageSaving }) => (
@@ -15,9 +15,14 @@ const FormSidebar = ({ pageSaving }) => (
         background: ${white()};
         border-radius: 3px;
         border: 1px solid ${black(0.1)};
-        flex: 0 0 300px;
-        margin: 0 0 0 30px;
         padding: 20px;
+      }
+
+      @media (min-width: ${medium}) {
+        aside {
+          flex: 0 0 300px;
+          margin: 0 0 0 30px;
+        }
       }
     `}</style>
   </aside>

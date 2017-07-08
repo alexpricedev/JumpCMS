@@ -11,6 +11,12 @@ const Wrapper = ({ children }) => (
         margin: 0 auto;
         max-width: ${maxWidth};
       }
+
+      @media (max-width: ${maxWidth}) {
+        div {
+          padding: 0 20px;
+        }
+      }
     `}</style>
   </div>
 );

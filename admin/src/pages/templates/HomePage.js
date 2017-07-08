@@ -14,6 +14,7 @@ import {
   FormTextarea,
   FormField
 } from '../../components/Forms';
+import { medium } from '../../constants/styles';
 
 const HomePage = ({ data, save }) => (
   <Layout>
@@ -67,9 +68,11 @@ const HomePage = ({ data, save }) => (
       <FormSidebar />
 
       <style jsx>{`
-        form {
-          align-items: flex-start;
-          display: flex;
+        @media (min-width: ${medium}) {
+          form {
+            align-items: flex-start;
+            display: flex;
+          }
         }
       `}</style>
     </form>

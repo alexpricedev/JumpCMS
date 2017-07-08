@@ -1,12 +1,16 @@
 import React from 'react';
 
+import { medium } from '../../constants/styles';
+
 const FormBody = ({ children }) => (
   <div>
     { children }
 
     <style jsx>{`
-      div {
-        flex: 1 0;
+      @media (min-width: ${medium}) {
+        div {
+          flex: 1 0;
+        }
       }
     `}</style>
   </div>
