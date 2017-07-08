@@ -2,7 +2,7 @@ import React from 'react';
 
 const LayoutTitle = ({ children }) => (
   <h1>
-    { children } Page
+    { children }
 
     <style jsx>{`
       h1 {

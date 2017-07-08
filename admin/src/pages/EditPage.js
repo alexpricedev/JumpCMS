@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import getFormData from 'get-form-data';
 
-import updatePage from './actions/update-page';
+import { createPage, updatePage } from './actions';
 import Layout, {
   LayoutTitle
 } from '../components/Layout';
@@ -21,7 +21,7 @@ const EditPage = props => {
   const slug = location.pathname.split('/').pop();
 
   // Get the page object from the store
-  const page = pages.find(page => page.slug === slug) || { content: {} };
+  const page = pages.find(p => p.slug === slug) || { content: {} };
 
   // Get the right page template
   let Template = templates[slug];
@@ -39,11 +39,11 @@ const EditPage = props => {
         onSubmit={e => {
           e.preventDefault();
           const content = getFormData(e.target);
-          save(page._id, { content });
+          save(page._id, { slug, content });
         }}
       >
         <Template page={page} />
-        <FormSidebar />
+        <FormSidebar page={page} />
       </form>
 
       <style jsx>{`
@@ -65,7 +65,11 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     save: (pageId, newData) => {
-      dispatch(updatePage(pageId, newData));
+      if (pageId) {
+        dispatch(updatePage(pageId, newData));
+      } else {
+        dispatch(createPage(newData));
+      }
     }
   };
 }
