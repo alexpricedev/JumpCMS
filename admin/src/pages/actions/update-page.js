@@ -15,7 +15,10 @@ const updatePage = function() {
     pages
       .patch(
         currentPage._id,
-        { content: currentPage.content }
+        {
+          content: currentPage.content,
+          meta: currentPage.meta
+        }
       )
       .then(page => {
         dispatch({ type: UPDATE_PAGE, page });

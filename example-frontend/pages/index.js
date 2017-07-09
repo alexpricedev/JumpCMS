@@ -4,8 +4,8 @@ import Hero from '../components/Hero';
 import getInitialProps from '../helpers/getInitialProps';
 import { medium } from '../constants/styles';
 
-const Index = ({ content }) => (
-  <Layout content={content} page="home">
+const Index = ({ meta, content }) => (
+  <Layout meta={meta} page="home">
     <Hero content={content} />
 
     <Wrapper>

@@ -28,8 +28,8 @@ class EditPage extends Component {
     const slug = location.pathname.split('/').pop();
 
     // Get the page object from the store, if it doesn't
-    // exist then we return an empty content object
-    const newPage = { slug, content: {} }
+    // exist then we return an empty page object
+    const newPage = { slug, content: {}, meta: {} }
     const page = pages.find(p => p.slug === slug) || newPage;
 
     // Setup the store for the current page

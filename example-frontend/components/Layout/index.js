@@ -5,7 +5,7 @@ import Header from './Header';
 import { white, black } from '../../constants/styles';
 
 const Layout = props => {
-  const { page, content, children } = props;
+  const { page, meta, children } = props;
 
   return (
     <div>
@@ -13,11 +13,11 @@ const Layout = props => {
         <meta httpEquiv="x-ua-compatible" content="ie=edge"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 
-        <title>{ content.metaTitle }</title>
+        <title>{ meta.title }</title>
 
         <meta
           name="description"
-          content={content.metaDescription}
+          content={meta.description}
         />
 
         <link

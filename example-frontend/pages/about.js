@@ -4,8 +4,8 @@ import { MiniHero } from '../components/Hero';
 import getInitialProps from '../helpers/getInitialProps';
 import { medium } from '../constants/styles';
 
-const About = ({ content }) => (
-  <Layout content={content} page="about">
+const About = ({ meta, content }) => (
+  <Layout meta={meta} page="about">
     <MiniHero content={content} />
 
     <Wrapper>

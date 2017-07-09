@@ -38,18 +38,18 @@ const FormSidebar = ({ pageSaving, page, updateValue }) => {
         <FormField
           helptext="The title text that appears in search results (max 160 characters)"
           label="Page meta title"
-          name="metaTitle"
+          name="title"
           onChange={updateValue}
           type="text"
-          value={page.content.metaTitle}
+          value={page.meta.title}
         />
         <FormField
           helptext="The description text that appears below the title in search results"
           label="Page meta description"
-          name="metaDescription"
+          name="description"
           onChange={updateValue}
           type="text"
-          value={page.content.metaDescription}
+          value={page.meta.description}
         />
       </div>
 
