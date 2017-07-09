@@ -36,7 +36,6 @@ const Header = ({ page }) => {
       <style jsx>{`
         nav {
           background: ${white};
-          border-bottom: 1px solid ${black(0.1)};
         }
 
         div {

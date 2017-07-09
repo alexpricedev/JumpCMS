@@ -23,17 +23,17 @@ const FormField = (props) => {
   } = props;
 
   const labelCls = classNames([
-    'form-label',
+    'FormField',
     {
-      'form-label--error': error,
+      'FormField--error': error,
     },
   ]);
 
   const inputCls = classNames([
-    'form-label__input',
+    'FormField__input',
     {
-      'form-label__input--error': error,
-      'form-label__input--small': small,
+      'FormField__input--error': error,
+      'FormField__input--small': small,
     },
   ]);
 
@@ -42,49 +42,61 @@ const FormField = (props) => {
       className={labelCls}
       htmlFor={name}
     >
-      <span className="form-label__text">
+      <span className="FormField__text">
         { label }
       </span>
 
-      <input
-        name={name}
-        id={name}
-        type={type}
-        value={value}
-        defaultValue={defaultValue}
-        onChange={onChange}
-        placeholder={placeholder}
-        className={inputCls}
-      />
+      { type === 'textarea' ?
+        <textarea
+          className={inputCls}
+          defaultValue={defaultValue}
+          id={name}
+          name={name}
+          onChange={onChange}
+          placeholder={placeholder}
+          style={{ minHeight: '100px' }}
+          value={value}
+        /> :
+        <input
+          className={inputCls}
+          defaultValue={defaultValue}
+          id={name}
+          name={name}
+          onChange={onChange}
+          placeholder={placeholder}
+          type={type}
+          value={value}
+        />
+      }
 
       { helptext &&
-        <span className="form-label__helptext">
+        <span className="FormField__helptext">
           { helptext }
         </span>
       }
 
       { error &&
-        <span className="form-label__error">
+        <span className="FormField__error">
           { error }
         </span>
       }
 
       <style jsx>{`
-        .form-label {
+        .FormField {
           display: block;
         }
 
-        :global(.form-label:not(:last-of-type)) {
+        :global(.FormField:not(:last-of-type)) {
           margin: 0 0 20px;
         }
 
-        .form-label__text {
+        .FormField__text {
           color: ${black()};
           display: block;
           margin: 0 0 10px;
         }
 
-        .form-label__input {
+        .FormField__input {
           background: ${white()};
           border-radius: 3px;
           border: 2px solid ${black(0.2)};
@@ -96,20 +108,21 @@ const FormField = (props) => {
           width: 100%;
         }
 
-        .form-label__input:hover,
-        .form-label__input:focus {
+        .FormField__input:hover,
+        .FormField__input:focus {
           opacity: 1;
         }
 
-        .form-label__input--small {
+        .FormField__input--small {
           max-width: 400px;
         }
 
-        .form-label__helptext {
+        .FormField__helptext {
           display: block;
           font-size: 14px;
+          line-height: 16px;
           opacity: 0.4;
-          padding: 10px 0;
+          padding: 7px 0 0;
         }
       `}</style>
     </label>

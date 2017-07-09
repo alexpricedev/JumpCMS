@@ -3,7 +3,6 @@ import React from 'react';
 import {
   FormBody,
   FormSection,
-  FormTextarea,
   FormField
 } from '../../components/Forms';
 
@@ -11,38 +10,39 @@ const HomePage = ({ page }) => (
   <FormBody>
     <FormSection title="Hero">
       <FormField
-        name="heroHeadline"
-        label="Hero headline"
-        type="text"
         defaultValue={page.content.heroHeadline}
         helptext="Enter a powerful statement about your business"
+        label="Hero headline"
+        name="heroHeadline"
+        type="text"
       />
       <FormField
-        name="heroSubHeadline"
-        label="Hero sub-headline"
-        type="text"
         defaultValue={page.content.heroSubHeadline}
         helptext="This text appears below the headline. Enter something to backup your headline"
+        label="Hero sub-headline"
+        name="heroSubHeadline"
+        type="text"
       />
       <FormField
-        name="heroButtonText"
-        label="Hero button text"
-        type="text"
         defaultValue={page.content.heroButtonText}
+        label="Hero button text"
+        name="heroButtonText"
         small
+        type="text"
       />
     </FormSection>
     <FormSection title="Leader">
       <FormField
-        name="leaderTitle"
-        label="Leader title"
-        type="text"
         defaultValue={page.content.leaderTitle}
+        label="Leader title"
+        name="leaderTitle"
+        type="text"
       />
-      <FormTextarea
-        name="leaderText"
-        label="Leader text"
+      <FormField
         defaultValue={page.content.leaderText}
+        label="Leader text"
+        name="leaderText"
+        type="textarea"
       />
     </FormSection>
   </FormBody>

@@ -5,7 +5,7 @@ import Header from './Header';
 import { white, black } from '../../constants/styles';
 
 const Layout = props => {
-  const { page, meta, children } = props;
+  const { page, content, children } = props;
 
   return (
     <div>
@@ -13,13 +13,11 @@ const Layout = props => {
         <meta httpEquiv="x-ua-compatible" content="ie=edge"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
 
-        <title>
-          { `JumpCMS Example | ${meta.title}` }
-        </title>
+        <title>{ content.metaTitle }</title>
 
         <meta
           name="description"
-          content={meta.description}
+          content={content.metaDescription}
         />
 
         <link

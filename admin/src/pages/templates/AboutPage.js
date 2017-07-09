@@ -3,7 +3,6 @@ import React from 'react';
 import {
   FormBody,
   FormSection,
-  FormTextarea,
   FormField
 } from '../../components/Forms';
 
@@ -11,19 +10,20 @@ const AboutPage = ({ page }) => (
   <FormBody>
     <FormSection title="Mini hero">
       <FormField
-        name="heroHeadline"
-        label="Mini hero headline"
-        type="text"
         defaultValue={page.content.heroHeadline}
         helptext="Enter a catchy headline for this page"
+        label="Mini hero headline"
+        name="heroHeadline"
+        type="text"
       />
     </FormSection>
     <FormSection title="Main Content">
-      <FormTextarea
-        name="bodyText"
-        label="Body Text"
+      <FormField
         defaultValue={page.content.bodyText}
         helptext="Enter the main body text here"
+        label="Body Text"
+        name="bodyText"
+        type="textarea"
       />
     </FormSection>
   </FormBody>

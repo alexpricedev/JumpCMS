@@ -5,7 +5,7 @@ import getInitialProps from '../helpers/getInitialProps';
 import { medium } from '../constants/styles';
 
 const About = ({ content }) => (
-  <Layout meta={{}} page="about">
+  <Layout content={content} page="about">
     <MiniHero content={content} />
 
     <Wrapper>

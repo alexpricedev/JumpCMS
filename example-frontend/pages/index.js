@@ -5,7 +5,7 @@ import getInitialProps from '../helpers/getInitialProps';
 import { medium } from '../constants/styles';
 
 const Index = ({ content }) => (
-  <Layout meta={{}} page="home">
+  <Layout content={content} page="home">
     <Hero content={content} />
 
     <Wrapper>
