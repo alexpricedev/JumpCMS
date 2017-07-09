@@ -6,11 +6,11 @@ import { FormField } from '../Forms';
 import { white, black, medium } from '../../constants/styles';
 import Button from '../Button';
 
-const FormSidebar = ({ pageSaving, page }) => {
+const FormSidebar = ({ pageSaving, page, updateValue }) => {
 
   // It's possible that page doesn't exist in the DB yet.
-  // If that's the case, page.slug will be `undefined`.
-  const newPage = page.slug ? false : true;
+  // If that's the case, page._id will be `undefined`.
+  const newPage = page._id ? false : true;
 
   const createdAt = moment(page.createdAt);
   const updatedAt = moment(page.updatedAt);
@@ -36,25 +36,27 @@ const FormSidebar = ({ pageSaving, page }) => {
 
       <div>
         <FormField
-          name="metaTitle"
+          helptext="The title text that appears in search results (max 160 characters)"
           label="Page meta title"
+          name="metaTitle"
+          onChange={updateValue}
           type="text"
-          defaultValue={page.content.metaTitle}
-          helptext="This is the title text that appears in search results (max 160 characters)"
+          value={page.content.metaTitle}
         />
         <FormField
-          name="metaDescription"
+          helptext="The description text that appears below the title in search results"
           label="Page meta description"
+          name="metaDescription"
+          onChange={updateValue}
           type="text"
-          defaultValue={page.content.metaDescription}
-          helptext="This is the description text that appears below the title in search results"
+          value={page.content.metaDescription}
         />
       </div>
 
       { !newPage &&
         <span className="Sidebar__createdAt">
           Created on
-          <time datetime={createdAt.format()}>
+          <time dateTime={createdAt.format()}>
             { createdAt.format('MMMM Do YYYY') }
           </time>
         </span>

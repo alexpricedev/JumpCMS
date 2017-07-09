@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { Component }from 'react';
 import { connect } from 'react-redux';
-import getFormData from 'get-form-data';
 
-import { createPage, updatePage } from './actions';
+import {
+  createPage,
+  updatePage,
+} from './actions';
+import {
+  SET_CURRENT_PAGE,
+  UPDATE_CURRENT_PAGE,
+} from './constants';
 import Layout, {
   LayoutTitle
 } from '../components/Layout';
@@ -14,48 +20,68 @@ import { FormSidebar } from '../components/Forms';
 import { medium } from '../constants/styles';
 import templates from './templates';
 
-const EditPage = props => {
-  const { location, pages, save } = props;
+class EditPage extends Component {
+  componentDidMount() {
+    const { location, pages, setup } = this.props;
 
-  // Get the current page slug
-  const slug = location.pathname.split('/').pop();
+    // Get the current page slug
+    const slug = location.pathname.split('/').pop();
 
-  // Get the page object from the store
-  const page = pages.find(p => p.slug === slug) || { content: {} };
+    // Get the page object from the store, if it doesn't
+    // exist then we return an empty content object
+    const newPage = { slug, content: {} }
+    const page = pages.find(p => p.slug === slug) || newPage;
 
-  // Get the right page template
-  let Template = templates[slug];
+    // Setup the store for the current page
+    setup(page);
+  }
 
-  return (
-    <Layout>
-      <Breadcrumbs>
-        <Breadcrumb to="/pages/" title="Pages" />
-        <Breadcrumb title={`${slug} Page`} />
-      </Breadcrumbs>
+  render() {
+    const {
+      currentPage: page,
+      updateContent,
+      updateMeta,
+      save
+    } = this.props;
 
-      <LayoutTitle>{ slug } Page</LayoutTitle>
+    // We need to wait for the store to get initialised
+    if (!page) {
+      return null;
+    }
 
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          const content = getFormData(e.target);
-          save(page._id, { slug, content });
-        }}
-      >
-        <Template page={page} />
-        <FormSidebar page={page} />
-      </form>
+    // Get the right page template
+    let Template = templates[page.slug];
 
-      <style jsx>{`
-        @media (min-width: ${medium}) {
-          form {
-            align-items: flex-start;
-            display: flex;
+    return (
+      <Layout>
+        <Breadcrumbs>
+          <Breadcrumb to="/pages/" title="Pages" />
+          <Breadcrumb title={`${page.slug} Page`} />
+        </Breadcrumbs>
+
+        <LayoutTitle>{ page.slug } Page</LayoutTitle>
+
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+            save(page._id);
+          }}
+        >
+          <Template page={page} updateValue={updateContent} />
+          <FormSidebar page={page} updateValue={updateMeta} />
+        </form>
+
+        <style jsx>{`
+          @media (min-width: ${medium}) {
+            form {
+              align-items: flex-start;
+              display: flex;
+            }
           }
-        }
-      `}</style>
-    </Layout>
-  );
+        `}</style>
+      </Layout>
+    );
+  }
 }
 
 function mapStateToProps(state) {
@@ -64,11 +90,30 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    save: (pageId, newData) => {
+    setup: page => {
+      dispatch({ type: SET_CURRENT_PAGE, page });
+    },
+    updateContent: e => {
+      dispatch({
+        type: UPDATE_CURRENT_PAGE,
+        group: 'content',
+        key: e.target.name,
+        value: e.target.value
+      });
+    },
+    updateMeta: e => {
+      dispatch({
+        type: UPDATE_CURRENT_PAGE,
+        group: 'meta',
+        key: e.target.name,
+        value: e.target.value
+      });
+    },
+    save: (pageId) => {
       if (pageId) {
-        dispatch(updatePage(pageId, newData));
+        dispatch(updatePage());
       } else {
-        dispatch(createPage(newData));
+        dispatch(createPage());
       }
     }
   };

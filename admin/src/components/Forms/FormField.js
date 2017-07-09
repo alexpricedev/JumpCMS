@@ -3,7 +3,8 @@ import classNames from 'classnames'
 
 import {
   white,
-  black
+  black,
+  darkgreen
 } from '../../constants/styles';
 
 const FormField = (props) => {
@@ -15,6 +16,7 @@ const FormField = (props) => {
     name,
     onChange,
     placeholder,
+    required,
     type,
     value,
 
@@ -44,6 +46,11 @@ const FormField = (props) => {
     >
       <span className="FormField__text">
         { label }
+        { required &&
+          <span className="FormField__required">
+            (required)
+          </span>
+        }
       </span>
 
       { type === 'textarea' ?
@@ -96,6 +103,12 @@ const FormField = (props) => {
           margin: 0 0 10px;
         }
 
+        .FormField__required {
+          font-size: 12px;
+          opacity: 0.5;
+          padding: 0 0 0 6px;
+        }
+
         .FormField__input {
           background: ${white()};
           border-radius: 3px;
@@ -104,13 +117,18 @@ const FormField = (props) => {
           font-size: 16px;
           opacity: 0.5;
           padding: 16px;
-          transition: opacity 0.3s ease;
+          transition: all 0.3s ease;
           width: 100%;
         }
 
         .FormField__input:hover,
         .FormField__input:focus {
+          border-color: ${darkgreen(0.6)};
           opacity: 1;
+        }
+
+        .FormField__input:focus {
+          background: ${darkgreen(0.1)};
         }
 
         .FormField__input--small {

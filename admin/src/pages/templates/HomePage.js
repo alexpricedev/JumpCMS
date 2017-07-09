@@ -6,43 +6,49 @@ import {
   FormField
 } from '../../components/Forms';
 
-const HomePage = ({ page }) => (
+const HomePage = ({ page, updateValue }) => (
   <FormBody>
     <FormSection title="Hero">
       <FormField
-        defaultValue={page.content.heroHeadline}
         helptext="Enter a powerful statement about your business"
         label="Hero headline"
         name="heroHeadline"
+        onChange={updateValue}
+        required
         type="text"
+        value={page.content.heroHeadline}
       />
       <FormField
-        defaultValue={page.content.heroSubHeadline}
         helptext="This text appears below the headline. Enter something to backup your headline"
         label="Hero sub-headline"
         name="heroSubHeadline"
+        onChange={updateValue}
         type="text"
+        value={page.content.heroSubHeadline}
       />
       <FormField
-        defaultValue={page.content.heroButtonText}
         label="Hero button text"
         name="heroButtonText"
+        onChange={updateValue}
         small
         type="text"
+        value={page.content.heroButtonText}
       />
     </FormSection>
     <FormSection title="Leader">
       <FormField
-        defaultValue={page.content.leaderTitle}
         label="Leader title"
         name="leaderTitle"
+        onChange={updateValue}
         type="text"
+        value={page.content.leaderTitle}
       />
       <FormField
-        defaultValue={page.content.leaderText}
         label="Leader text"
         name="leaderText"
+        onChange={updateValue}
         type="textarea"
+        value={page.content.leaderText}
       />
     </FormSection>
   </FormBody>

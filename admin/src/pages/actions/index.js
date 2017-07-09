@@ -3,5 +3,5 @@ import updatePage from './update-page';
 
 export {
   createPage,
-  updatePage
+  updatePage,
 };
