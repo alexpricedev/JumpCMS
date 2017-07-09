@@ -9,20 +9,13 @@ import {
 
 const AboutPage = ({ page }) => (
   <FormBody>
-    <FormSection title="Hero">
+    <FormSection title="Mini hero">
       <FormField
         name="heroHeadline"
-        label="Hero headline"
+        label="Mini hero headline"
         type="text"
         defaultValue={page.content.heroHeadline}
-        helptext="Enter a powerful statement about your business"
-      />
-      <FormField
-        name="heroButtonText"
-        label="Hero button text"
-        type="text"
-        defaultValue={page.content.heroButtonText}
-        small
+        helptext="Enter a catchy headline for this page"
       />
     </FormSection>
     <FormSection title="Main Content">
@@ -30,14 +23,7 @@ const AboutPage = ({ page }) => (
         name="bodyText"
         label="Body Text"
         defaultValue={page.content.bodyText}
-        helptext="Enter your main body text here"
-      />
-      <FormField
-        name="bodyCTAButton"
-        label="Body CTA button text"
-        type="text"
-        defaultValue={page.content.bodyCTAButton}
-        small
+        helptext="Enter the main body text here"
       />
     </FormSection>
   </FormBody>

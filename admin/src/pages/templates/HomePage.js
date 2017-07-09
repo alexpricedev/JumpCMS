@@ -18,6 +18,13 @@ const HomePage = ({ page }) => (
         helptext="Enter a powerful statement about your business"
       />
       <FormField
+        name="heroSubHeadline"
+        label="Hero sub-headline"
+        type="text"
+        defaultValue={page.content.heroSubHeadline}
+        helptext="This text appears below the headline. Enter something to backup your headline"
+      />
+      <FormField
         name="heroButtonText"
         label="Hero button text"
         type="text"
@@ -25,12 +32,17 @@ const HomePage = ({ page }) => (
         small
       />
     </FormSection>
-    <FormSection title="Main Content">
+    <FormSection title="Leader">
+      <FormField
+        name="leaderTitle"
+        label="Leader title"
+        type="text"
+        defaultValue={page.content.leaderTitle}
+      />
       <FormTextarea
-        name="bodyText"
-        label="Body Text"
-        defaultValue={page.content.bodyText}
-        helptext="Enter your main body text here"
+        name="leaderText"
+        label="Leader text"
+        defaultValue={page.content.leaderText}
       />
     </FormSection>
   </FormBody>

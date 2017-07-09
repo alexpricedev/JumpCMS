@@ -1,37 +1,43 @@
-import 'isomorphic-unfetch';
-
-import Header from '../components/Header';
+import Layout from '../components/Layout';
+import Wrapper from '../components/Wrapper';
+import { MiniHero } from '../components/Hero';
 import getInitialProps from '../helpers/getInitialProps';
+import { medium } from '../constants/styles';
 
-const Index = ({ content }) => (
-  <div>
-    <Header />
-    <center>
-      <h1>
-        {content.heroHeadline}
-      </h1>
-      <span>
-        {content.heroButtonText}
-      </span>
-      <br />
-      <br />
-      <p>
-        {content.bodyText}
-      </p>
-    </center>
+const About = ({ content }) => (
+  <Layout meta={{}} page="about">
+    <MiniHero content={content} />
+
+    <Wrapper>
+      <center>
+        <p>
+          {content.bodyText}
+        </p>
+      </center>
+    </Wrapper>
 
     <style jsx>{`
-      span {
-        background: blue;
-        border-radius: 3px;
-        color: white;
-        display: inline-block;
-        padding: 10px 20px;
+      center {
+        padding: 40px 10px;
+      }
+
+      p {
+        font-size: 15px;
+        margin: 0;
+        padding: 0 20px;
+        white-space: pre-line;
+      }
+
+      @media (min-width: ${medium}) {
+        p {
+          font-size: 18px;
+          padding: 0 100px;
+        }
       }
     `}</style>
-  </div>
+  </Layout>
 );
 
-Index.getInitialProps = getInitialProps;
+About.getInitialProps = getInitialProps;
 
-export default Index;
+export default About;

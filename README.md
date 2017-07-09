@@ -9,7 +9,7 @@ databases to allow the schema to be defined by React components.
 
 Creating a new page type is as simple as exporting a new template component.
 
-JumpCMS is headless, meaning it doens't handle any rendering of templates, it
+JumpCMS is headless, meaning it doesn't handle any rendering of templates, it
 simply exposes REST endpoints. This means you can built your front-end however
 you like!
 
