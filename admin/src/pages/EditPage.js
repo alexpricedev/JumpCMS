@@ -1,4 +1,4 @@
-import React, { Component }from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {
@@ -7,7 +7,7 @@ import {
 } from './actions';
 import {
   SET_CURRENT_PAGE,
-  UPDATE_CURRENT_PAGE,
+  UPDATE_CURRENT_PAGE_DATA,
 } from './constants';
 import Layout, {
   LayoutTitle
@@ -39,9 +39,10 @@ class EditPage extends Component {
   render() {
     const {
       currentPage: page,
+      errors,
+      save,
       updateContent,
       updateMeta,
-      save
     } = this.props;
 
     // We need to wait for the store to get initialised
@@ -50,6 +51,7 @@ class EditPage extends Component {
     }
 
     // Get the right page template
+    // TODO: Could this be moved out of render() ?
     let Template = templates[page.slug];
 
     return (
@@ -67,8 +69,16 @@ class EditPage extends Component {
             save(page._id);
           }}
         >
-          <Template page={page} updateValue={updateContent} />
-          <FormSidebar page={page} updateValue={updateMeta} />
+          <Template
+            errors={errors}
+            page={page}
+            updateValue={updateContent}
+          />
+          <FormSidebar
+            errors={errors}
+            page={page}
+            updateValue={updateMeta}
+          />
         </form>
 
         <style jsx>{`
@@ -95,7 +105,7 @@ function mapDispatchToProps(dispatch) {
     },
     updateContent: e => {
       dispatch({
-        type: UPDATE_CURRENT_PAGE,
+        type: UPDATE_CURRENT_PAGE_DATA,
         group: 'content',
         key: e.target.name,
         value: e.target.value
@@ -103,7 +113,7 @@ function mapDispatchToProps(dispatch) {
     },
     updateMeta: e => {
       dispatch({
-        type: UPDATE_CURRENT_PAGE,
+        type: UPDATE_CURRENT_PAGE_DATA,
         group: 'meta',
         key: e.target.name,
         value: e.target.value

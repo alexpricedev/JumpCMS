@@ -3,10 +3,21 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 import { FormField } from '../Forms';
-import { white, black, medium } from '../../constants/styles';
 import Button from '../Button';
+import {
+  black,
+  medium,
+  red,
+  white,
+} from '../../constants/styles';
 
-const FormSidebar = ({ pageSaving, page, updateValue }) => {
+const FormSidebar = props => {
+  const {
+    errors,
+    page,
+    pageSaving,
+    updateValue,
+  } = props;
 
   // It's possible that page doesn't exist in the DB yet.
   // If that's the case, page._id will be `undefined`.
@@ -20,6 +31,10 @@ const FormSidebar = ({ pageSaving, page, updateValue }) => {
   return (
     <aside className="Sidebar">
       <div>
+        { errors &&
+          <h4>Your form has some errors</h4>
+        }
+
         <Button block>
           { pageSaving ?  'Saving...' : saveText }
         </Button>
@@ -69,6 +84,18 @@ const FormSidebar = ({ pageSaving, page, updateValue }) => {
           border: 1px solid ${black(0.1)};
           margin: 0 0 10px;
           padding: 20px;
+        }
+
+        h4 {
+          background: ${red(0.05)};
+          border-radius: 3px;
+          border: 1px solid ${red(0.1)};
+          color: ${red()};
+          font-size: 15px;
+          line-height: 20px;
+          margin: 0 0 15px;
+          padding: 10px;
+          text-align: center;
         }
 
         .Sidebar__updatedAt {

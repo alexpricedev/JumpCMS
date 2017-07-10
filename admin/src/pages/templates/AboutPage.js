@@ -6,10 +6,11 @@ import {
   FormField
 } from '../../components/Forms';
 
-const AboutPage = ({ page, updateValue }) => (
+const AboutPage = ({ errors, page, updateValue }) => (
   <FormBody>
     <FormSection title="Mini hero">
       <FormField
+        errors={errors}
         helptext="Enter a catchy headline for this page"
         label="Mini hero headline"
         name="heroHeadline"
@@ -20,6 +21,7 @@ const AboutPage = ({ page, updateValue }) => (
     </FormSection>
     <FormSection title="Main Content">
       <FormField
+        errors={errors}
         helptext="Enter the main body text here"
         label="Body Text"
         name="bodyText"

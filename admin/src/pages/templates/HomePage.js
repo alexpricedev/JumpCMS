@@ -6,10 +6,11 @@ import {
   FormField
 } from '../../components/Forms';
 
-const HomePage = ({ page, updateValue }) => (
+const HomePage = ({ errors, page, updateValue }) => (
   <FormBody>
     <FormSection title="Hero">
       <FormField
+        errors={errors}
         helptext="Enter a powerful statement about your business"
         label="Hero headline"
         name="heroHeadline"
@@ -19,6 +20,7 @@ const HomePage = ({ page, updateValue }) => (
         value={page.content.heroHeadline}
       />
       <FormField
+        errors={errors}
         helptext="This text appears below the headline. Enter something to backup your headline"
         label="Hero sub-headline"
         name="heroSubHeadline"
@@ -27,6 +29,7 @@ const HomePage = ({ page, updateValue }) => (
         value={page.content.heroSubHeadline}
       />
       <FormField
+        errors={errors}
         label="Hero button text"
         name="heroButtonText"
         onChange={updateValue}
@@ -37,6 +40,7 @@ const HomePage = ({ page, updateValue }) => (
     </FormSection>
     <FormSection title="Leader">
       <FormField
+        errors={errors}
         label="Leader title"
         name="leaderTitle"
         onChange={updateValue}
@@ -44,9 +48,11 @@ const HomePage = ({ page, updateValue }) => (
         value={page.content.leaderTitle}
       />
       <FormField
+        errors={errors}
         label="Leader text"
         name="leaderText"
         onChange={updateValue}
+        required
         type="textarea"
         value={page.content.leaderText}
       />

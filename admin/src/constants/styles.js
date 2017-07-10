@@ -10,6 +10,7 @@ const grey = (a = 1) => `rgba(242, 243, 245, ${a})`;
 const green = (a = 1) => `rgba(95, 202, 198, ${a})`;
 const darkgreen = (a = 1) => `rgba(84, 172, 169, ${a})`;
 const blue = (a = 1) => `rgba(118, 167, 225, ${a})`;
+const red = (a = 1) => `rgba(229, 56, 56, ${a})`;
 
 // Breakpoints
 const small = '540px';
@@ -25,6 +26,7 @@ export {
   green,
   darkgreen,
   blue,
+  red,
 
   small,
   medium,
