@@ -24,7 +24,7 @@ export default `
 
     :global(.Header__logo-link) {
       display: block;
-      flex: 0 0 50px;
+      flex: 0 0 30px;
       transition: opacity 0.3s ease;
     }
 

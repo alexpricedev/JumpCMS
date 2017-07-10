@@ -54,8 +54,8 @@ const Login = ({ authenticate }) => (
 
       img {
         height: auto;
-        padding: 0 40px;
-        width: 50%;
+        padding: 20px 40px;
+        width: calc(50% - 40px);
       }
 
       h1 {
